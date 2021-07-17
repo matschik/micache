@@ -1,0 +1,7 @@
+{
+  "name": "minicache",
+  "version": "1.0.0",
+  "exports": "./index.js",
+  "license": "MIT",
+  "type": "module"
+}

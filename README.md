@@ -15,7 +15,7 @@ myCache.set("123", { name: "Denji" });
 myCache.get("123"); // { name: "Denji" }
 
 myCache.set("567", { isTemporary: true }, { expireSec: 30 });
-myCache.get("567"); // { name: "Denji" }
+myCache.get("567"); // { isTemporary: true }
 // 30 seconds later ...
 myCache.get("567"); // undefined
 ```

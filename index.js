@@ -55,6 +55,7 @@ export function createAsyncCache(fetcher, { expireSec } = {}) {
     }
 
     data = await promisesByCacheKey[cacheKey];
+    delete promisesByCacheKey[cacheKey];
     return data;
   };
 }

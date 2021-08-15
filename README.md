@@ -10,17 +10,12 @@ import { createCache } from "micache";
 const myCache = createCache();
 
 myCache.set("123", { name: "Denji" });
-
-myCache.get("123");
-// { name: "Denji" }
+myCache.get("123"); // { name: "Denji" }
 
 myCache.set("567", { isTemporary: true }, { expireSec: 30 });
-myCache.get("567");
-// { name: "Denji" }
-
+myCache.get("567"); // { name: "Denji" }
 // 30 seconds later ...
-myCache.get("567");
-// undefined
+myCache.get("567"); // undefined
 ```
 
 ## `createAsyncCache`
@@ -51,6 +46,7 @@ const getPrice = createAsyncCache(
   { expireSec: 30 }
 );
 
-const price = await getPrice("btc", "usd");
-// 46201,98
+let price = await getPrice("btc", "usd"); // 46201,98
+// 30 seconds later ...
+price = await getPrice("btc", "usd"); // 46337,73
 ```

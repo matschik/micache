@@ -1,7 +1,7 @@
-export function createCache() {
+export function createCache({ expireSec } = {}) {
   const cache = {};
 
-  function setCache(key, data, { expireSec } = {}) {
+  function setCache(key, data) {
     cache[key] = {
       created: new Date().getTime(),
       expireSec,
@@ -33,12 +33,12 @@ export function createCache() {
 }
 
 export function createAsyncCache(fetcher, { expireSec } = {}) {
-  const cache = createCache();
+  const cache = createCache({ expireSec });
   const promisesByCacheKey = {};
 
   const fetcherWithCache = async (cacheKey, ...args) => {
     const data = await fetcher(...args);
-    cache.set(cacheKey, data, { expireSec });
+    cache.set(cacheKey, data);
     return data;
   };
 

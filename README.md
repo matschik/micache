@@ -2,9 +2,9 @@
 
 > Simple cache & caching fetched data strategy
 
-> Lightweight, 0% dependencies
-
 [![npm version](https://badge.fury.io/js/micache.svg)](https://badge.fury.io/js/micache)
+
+Lightweight, 0% dependencies
 
 ## `createCache`
 
@@ -39,10 +39,7 @@ import { createAsyncCache } from "micache";
 import redaxios from "redaxios";
 
 async function fetchPrice(fromCoinId, toCoinId){
-  fromCoinId = fromCoinId.toUpperCase();
-  toCoinId = toCoinId.toUpperCase();
-
-  const toAmountRes = await redaxios.get(
+  const response = await redaxios.get(
     "https://min-api.cryptocompare.com/data/pricemultifull",
     {
       params: {
@@ -52,7 +49,7 @@ async function fetchPrice(fromCoinId, toCoinId){
     }
   );
 
-  return toAmountRes.data.RAW[fromCoinId][toCoinId].PRICE;
+  return response.data.RAW[fromCoinId][toCoinId].PRICE;
 }
 
 const getPrice = createAsyncCache(fetchPrice, { expireSec: 30 });

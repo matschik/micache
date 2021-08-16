@@ -28,29 +28,27 @@ myTemporaryCache.get("567"); // undefined
 import { createAsyncCache } from "micache";
 import redaxios from "redaxios";
 
-const getPrice = createAsyncCache(
-  async (fromCoinId, toCoinId) => {
-    fromCoinId = fromCoinId.toUpperCase();
-    toCoinId = toCoinId.toUpperCase();
+async function fetchPrice(fromCoinId, toCoinId){
+  fromCoinId = fromCoinId.toUpperCase();
+  toCoinId = toCoinId.toUpperCase();
 
-    const toAmountRes = await redaxios.get(
-      "https://min-api.cryptocompare.com/data/pricemultifull",
-      {
-        params: {
-          fsyms: fromCoinId,
-          tsyms: toCoinId,
-        },
-      }
-    );
+  const toAmountRes = await redaxios.get(
+    "https://min-api.cryptocompare.com/data/pricemultifull",
+    {
+      params: {
+        fsyms: fromCoinId,
+        tsyms: toCoinId,
+      },
+    }
+  );
 
-    const toAmount = toAmountRes.data.RAW[fromCoinId][toCoinId].PRICE;
-    const displayAmount = toAmount.toFixed(2);
-    return displayAmount;
-  },
-  { expireSec: 30 }
-);
+  return toAmountRes.data.RAW[fromCoinId][toCoinId].PRICE;
+}
+
+const getPrice = createAsyncCache(fetchPrice, { expireSec: 30 });
 
 let price = await getPrice("btc", "usd"); // 46201,98
+price = await getPrice("btc", "usd"); // very fast with cache => 46201,98
 // 30 seconds later ...
 price = await getPrice("btc", "usd"); // 46337,73
 ```

@@ -6,6 +6,8 @@
 
 ## `createCache`
 
+### Simple cache
+
 ```js
 import { createCache } from "micache";
 
@@ -13,6 +15,12 @@ const myCache = createCache();
 
 myCache.set("123", { name: "Denji" });
 myCache.get("123"); // { name: "Denji" }
+```
+
+### Cache with expiring keys
+
+```js
+import { createCache } from "micache";
 
 const myTemporaryCache = createCache({ expireSec: 30 });
 

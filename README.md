@@ -1,6 +1,7 @@
 # Micache
 
 > Simple cache & caching fetched data strategy
+> Lightweight, 0% dependencies
 
 [![npm version](https://badge.fury.io/js/micache.svg)](https://badge.fury.io/js/micache)
 

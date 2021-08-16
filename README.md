@@ -1,4 +1,4 @@
-# Micache 🪶
+# Micache ⚡
 
 > Simple cache & caching fetched data strategy
 

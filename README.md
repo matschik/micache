@@ -14,10 +14,12 @@ const myCache = createCache();
 myCache.set("123", { name: "Denji" });
 myCache.get("123"); // { name: "Denji" }
 
-myCache.set("567", { isTemporary: true }, { expireSec: 30 });
-myCache.get("567"); // { isTemporary: true }
+const myTemporaryCache = createCache({ expireSec: 30 });
+
+myTemporaryCache.set("567", { name: "Power" });
+myTemporaryCache.get("567"); // { name: "Power" }
 // 30 seconds later ...
-myCache.get("567"); // undefined
+myTemporaryCache.get("567"); // undefined
 ```
 
 ## `createAsyncCache`

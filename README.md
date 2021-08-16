@@ -54,8 +54,8 @@ async function fetchPrice(fromCoinId, toCoinId){
 
 const getPrice = createAsyncCache(fetchPrice, { expireSec: 30 });
 
-let price = await getPrice("btc", "usd"); // 46201,98
-price = await getPrice("btc", "usd"); // very fast with cache => 46201,98
+let price = await getPrice("BTC", "USD"); // 46201,98
+price = await getPrice("BTC", "USD"); // very fast with cache => 46201,98
 // 30 seconds later ...
-price = await getPrice("btc", "usd"); // 46337,73
+price = await getPrice("BTC", "USD"); // 46337,73
 ```

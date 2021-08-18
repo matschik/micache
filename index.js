@@ -32,7 +32,7 @@ export function createCache({ expireSec } = {}) {
   };
 }
 
-export function createAsyncCache(fetcher, { expireSec } = {}) {
+export function createAsyncCache(fetcher, { expireSec, useUniqueKey = false } = {}) {
   const cache = createCache({ expireSec });
   const promisesByCacheKey = {};
 
@@ -43,7 +43,10 @@ export function createAsyncCache(fetcher, { expireSec } = {}) {
   };
 
   return async (...fetcherArgs) => {
-    const cacheKey = JSON.stringify(fetcherArgs);
+    let cacheKey = "c"
+    if(!useUniqueKey){
+      cacheKey = JSON.stringify(fetcherArgs);
+    }
 
     let data = cache.get(cacheKey);
     if (data) {

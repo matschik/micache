@@ -1,6 +1,6 @@
 {
   "name": "micache",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "exports": "./index.js",
   "license": "MIT",
   "type": "module",

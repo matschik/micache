@@ -1,6 +1,6 @@
 import fs from "fs/promises";
 import { packageDirectory } from "pkg-dir";
-import ensureDir from "./utils/ensureDir";
+import ensureDir from "./utils/ensureDir.js";
 
 export default async function createFsCache(name) {
   const pkgDir = await packageDirectory();

@@ -1,4 +1,4 @@
-export { default as createCache } from "./createCache";
-export { default as createAsyncCache } from "./createAsyncCache";
-export { default as createFsCache } from "./createFsCache";
-export { default as createFileMapCache } from "./createFileMapCache";
+export { default as createCache } from "./createCache.js";
+export { default as createAsyncCache } from "./createAsyncCache.js";
+export { default as createFsCache } from "./createFsCache.js";
+export { default as createFileMapCache } from "./createFileMapCache.js";

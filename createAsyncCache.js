@@ -1,4 +1,4 @@
-import createCache from "./createCache";
+import createCache from "./createCache.js";
 
 export default function createAsyncCache(fetcher, { expireSec, useUniqueKey = false } = {}) {
     const cache = createCache({ expireSec });

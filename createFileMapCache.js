@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
-import createFsCache from './createFsCache';
-import fileExist from './utils/fileExist';
-import md5 from './utils/md5';
+import createFsCache from './createFsCache.js';
+import fileExist from './utils/fileExist.js';
+import md5 from './utils/md5.js';
 
 export default async function createFileMapCache(name) {
 	const cache = await createFsCache(name);

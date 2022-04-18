@@ -4,7 +4,7 @@
 
 [![npm version](https://badge.fury.io/js/micache.svg)](https://badge.fury.io/js/micache)
 
-🪶 Lightweight, 0% dependencies
+🪶 Just lightweight
 
 ## `createCache`
 
@@ -59,3 +59,14 @@ price = await getPrice("BTC", "USD"); // very fast with cache => 46201,98
 // 30 seconds later ...
 price = await getPrice("BTC", "USD"); // 46337,73
 ```
+
+## `createFsCache`
+
+Create cache using filesystem.
+Cache is stored in `node_modules/.micache-fs` folder.
+
+## `createFileMapCache`
+
+Create a mapping between file content and data related to this content.
+This method is using `createFsCache` to store cache.
+

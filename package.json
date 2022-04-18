@@ -9,5 +9,8 @@
   "author": {
     "name": "Mathieu Schimmerling",
     "email": "mathieu.schimmerling@protonmail.com"
+  },
+  "dependencies": {
+    "pkg-dir": "^6.0.1"
   }
 }
